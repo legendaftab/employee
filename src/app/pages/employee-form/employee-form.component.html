@@ -1,0 +1,65 @@
+
+<div class="employee-list-container">
+  <div class="header">
+    <h2 class="mx-2">Add Employee Details</h2>
+  </div>
+</div>
+<div class="mx-2 mt-2">
+  <button [routerLink]="['/']" class="btn btn-warning">Dashboard</button>
+</div>
+
+<div class="container mt-5">
+  <div *ngIf="message" class="alert" [class.alert-success]="formSubmitted" [class.alert-danger]="!formSubmitted">
+    {{ message }}
+  </div>
+  <div *ngIf="!formSubmitted">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text bg-white"><i class="fas fa-user text-primary"></i></span>
+        </div>
+        <input type="text" id="name" class="form-control" [(ngModel)]="newEmployee.name" placeholder="Employee name">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text bg-white"><i class="fas fa-briefcase text-primary"></i></span>
+        </div>
+        <select id="role" class="form-control" [(ngModel)]="newEmployee.role">
+          <option value="" disabled>Select role</option>
+          <option value="Product Designer">Product Designer</option>
+          <option value="Flutter Developer">Flutter Developer</option>
+          <option value="QA Tester">QA Tester</option>
+          <option value="Product Owner">Product Owner</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row"> 
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="date-picker">
+          <mat-label>Start Date</mat-label>
+          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+          <input matInput [matDatepicker]="startPicker" [(ngModel)]="newEmployee.startDate" placeholder="Choose a date">
+          <mat-datepicker #startPicker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      to
+      <div class="col-lg-6">
+        <mat-form-field appearance="outline" class="date-picker">
+          <mat-label>End Date</mat-label>
+          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+          <input matInput [matDatepicker]="endPicker" [(ngModel)]="newEmployee.endDate" placeholder="Choose a date">
+          <mat-datepicker #endPicker></mat-datepicker>
+        </mat-form-field>
+      </div> 
+    </div>
+
+    <hr>
+    <div class="form-buttons">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+      <button type="submit" class="btn btn-primary" (click)="addEmployee()">Save</button>
+    </div>
+  </div>
+</div>

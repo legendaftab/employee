@@ -1,0 +1,174 @@
+/* no data found image css */
+.no-data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.no-data-image {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767.98px) {
+  .no-data-container {
+    padding: 10px;
+  }
+
+  .no-data-image {
+    max-width: 80%;
+  }
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.position-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* employee list */
+
+/* Container styling */
+.employee-list-container {
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+/* Employee list styling */
+.employee-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .employee-list-container {
+    padding: 5px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header h2 {
+    margin-bottom: 10px;
+  }
+
+  .employee-list {
+    flex-direction: column;
+  }
+}
+
+/* all listed employee css */
+
+.container {
+  max-width: 600px;
+}
+
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-group-item:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+h4 {
+  margin-bottom: 20px;
+}
+
+.btn-danger {
+  float: right;
+}
+
+.section-header {
+  background-color: #F2F2F2;
+  /* Light gray background */
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
+
+/* date */
+/* src/app/pages/employee-form/employee-form.component.scss */
+
+/* .date-picker-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.arrow {
+  color: #2196F3;
+  display: inline;
+  font-size: 60px !important;
+} */

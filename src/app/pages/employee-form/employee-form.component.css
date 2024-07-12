@@ -1,0 +1,174 @@
+/* add employee css */
+.employee-list-container {
+  padding: 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+}
+
+/* Header styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+/* Employee list styling */
+.employee-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .employee-list-container {
+    padding: 5px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header h2 {
+    margin-bottom: 10px;
+  }
+
+  .employee-list {
+    flex-direction: column;
+  }
+}
+
+/* employee form css */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.input-group-prepend .input-group-text {
+  background-color: #e9ecef;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 1.375rem 0.75rem;
+}
+
+.form-control {
+  border-radius: 0.25rem;
+  padding: 10px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  background-color: #EDF8FF;
+  border: 1px solid #ced4da;
+  color: #007bff
+}
+
+.btn-primary {
+  background-color: #1DA1F2;
+  border: none;
+}
+
+@media (max-width: 576px) {
+  .form-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    margin-bottom: 10px;
+  }
+
+  .btn:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* button css in mobile view */
+
+@media (max-width: 767.98px) {
+  .form-buttons {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .form-buttons .btn {
+    margin-bottom: 0;
+  }
+}
+
+/* date picker css */
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.col-lg-6 {
+  flex: 1; 
+  min-width: 0; 
+}
+
+.date-picker {
+  width: 100%;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* custom notification bar */
+.alert {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+
+
