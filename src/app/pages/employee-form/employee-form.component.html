@@ -39,24 +39,35 @@
         <div class="card-body">
           <div class="row mb-3">
             <div class="col-lg-6">
-              <label for="startDate">Start Date</label>
-              <input type="text" class="form-control" id="startDate" [(ngModel)]="newEmployee.startDate"
-                (focus)="openCalendar('startDate')" readonly>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text text-primary bg-white"><mat-icon>event</mat-icon></span>
+                </div>
+                <input type="text" class="form-control" id="startDate" [(ngModel)]="newEmployee.startDate" (focus)="openCalendar('startDate')" readonly>
+              </div>
             </div>
+            to
             <div class="col-lg-6">
-              <label for="endDate">End Date</label>
-              <input type="text" class="form-control" id="endDate" [(ngModel)]="newEmployee.endDate"
-                (focus)="openCalendar('endDate')" readonly>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-white text-primary"><mat-icon>event</mat-icon></span>
+                </div>
+                <input type="text" class="form-control" id="endDate" [(ngModel)]="newEmployee.endDate" (focus)="openCalendar('endDate')" readonly>
+              </div>
             </div>
           </div>
           <div *ngIf="isCalendarOpen" class="custom-calendar">
             <div class="button-group mb-3">
-              <button class="btn btn-primary" (click)="setToday()">Today</button>
-              <button class="btn btn-primary" (click)="setNextMonday()">Next Monday</button>
-              <button class="btn btn-primary" (click)="setNextTuesday()">Next Tuesday</button>
-              <button class="btn btn-primary" (click)="setAfterOneWeek()">After 1 week</button>
+              <button class="btn btn-calendar" [ngClass]="{'btn-calendar-active': activeButton === 'today'}"
+                (click)="setToday()">Today</button>
+              <button class="btn btn-calendar" [ngClass]="{'btn-calendar-active': activeButton === 'nextMonday'}"
+                (click)="setNextMonday()">Next Monday</button>
+              <button class="btn btn-calendar" [ngClass]="{'btn-calendar-active': activeButton === 'nextTuesday'}"
+                (click)="setNextTuesday()">Next Tuesday</button>
+              <button class="btn btn-calendar" [ngClass]="{'btn-calendar-active': activeButton === 'afterOneWeek'}"
+                (click)="setAfterOneWeek()">After 1 week</button>
             </div>
-            <mat-calendar (selectedChange)="onDateSelected($event)"></mat-calendar>
+            <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelected($event)"></mat-calendar>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/shared/employeee.service';
@@ -10,20 +11,31 @@ import { format } from 'date-fns';
 })
 export class EmployeeFormComponent implements OnInit {
 
-
+  //create object
   newEmployee = { name: '', role: '', startDate: '', endDate: '' };
   employees: any[] = [];
   formSubmitted = false;
+
   message = '';
+  activeButton: string = '';
+
+  // Date picker variables
+  activeDateField: 'startDate' | 'endDate' = 'startDate';
+  isCalendarOpen = false;
+  selectedDate: Date | null = null;
 
   constructor(
     private employeeService: EmployeeService,
     private router: Router,
-  ) {
-
-  }
+  ) {}
 
   ngOnInit(): void { }
+
+  loadEmployees(): void {
+    this.employeeService.getAllEmployees().subscribe(employees => {
+      this.employees = employees;
+    });
+  }
 
   addEmployee(): void {
     if (this.newEmployee.name && this.newEmployee.role && (this.newEmployee.startDate || this.newEmployee.endDate)) {
@@ -55,21 +67,12 @@ export class EmployeeFormComponent implements OnInit {
   resetForm(): void {
     this.newEmployee = { name: '', role: '', startDate: '', endDate: '' };
   }
-  loadEmployees(): void {
-    this.employeeService.getAllEmployees().subscribe(employees => {
-      this.employees = employees;
-    });
-  }
+
   cancel(): void {
     this.resetForm();
     this.formSubmitted = false;
     this.message = '';
   }
-
-  // date picker .ts
-  
-  activeDateField: 'startDate' | 'endDate' = 'startDate';
-  isCalendarOpen = false;
 
   openCalendar(field: 'startDate' | 'endDate') {
     this.activeDateField = field;
@@ -78,66 +81,54 @@ export class EmployeeFormComponent implements OnInit {
 
   closeCalendar() {
     this.isCalendarOpen = false;
+    this.activeButton = '';
   }
-
-  onDateSelected(event: any) {
+  
+  onDateSelected(event: Date) {
     const formattedDate = format(event, 'dd-MM-yyyy');
     if (this.activeDateField === 'startDate') {
       this.newEmployee.startDate = formattedDate;
     } else {
       this.newEmployee.endDate = formattedDate;
     }
+    this.selectedDate = event;
     this.closeCalendar();
   }
 
   setToday() {
-    const today = format(new Date(), 'dd-MM-yyyy');
-    if (this.activeDateField === 'startDate') {
-      this.newEmployee.startDate = today;
-    } else {
-      this.newEmployee.endDate = today;
-    }
-    this.adjustDates();
-    this.closeCalendar();
+    const today = new Date();
+    this.setDate(today, 'today');
   }
 
   setNextMonday() {
     const today = new Date();
     const nextMonday = new Date(today.setDate(today.getDate() + ((1 + 7 - today.getDay()) % 7 || 7)));
-    const formattedDate = format(nextMonday, 'dd-MM-yyyy');
-    if (this.activeDateField === 'startDate') {
-      this.newEmployee.startDate = formattedDate;
-    } else {
-      this.newEmployee.endDate = formattedDate;
-    }
-    this.adjustDates();
-    this.closeCalendar();
+    this.setDate(nextMonday, 'nextMonday');
   }
 
   setNextTuesday() {
     const today = new Date();
     const nextTuesday = new Date(today.setDate(today.getDate() + ((2 + 7 - today.getDay()) % 7 || 7)));
-    const formattedDate = format(nextTuesday, 'dd-MM-yyyy');
-    if (this.activeDateField === 'startDate') {
-      this.newEmployee.startDate = formattedDate;
-    } else {
-      this.newEmployee.endDate = formattedDate;
-    }
-    this.adjustDates();
-    this.closeCalendar();
+    this.setDate(nextTuesday, 'nextTuesday');
   }
 
   setAfterOneWeek() {
     const today = new Date();
     const nextWeek = new Date(today.setDate(today.getDate() + 7));
-    const formattedDate = format(nextWeek, 'dd-MM-yyyy');
+    this.setDate(nextWeek, 'afterOneWeek');
+  }
+
+  setDate(date: Date, button: string) {
+    const formattedDate = format(date, 'dd-MM-yyyy');
     if (this.activeDateField === 'startDate') {
       this.newEmployee.startDate = formattedDate;
     } else {
       this.newEmployee.endDate = formattedDate;
     }
+    this.selectedDate = date;
+    this.activeButton = button;
+    this.isCalendarOpen = false;
     this.adjustDates();
-    this.closeCalendar();
   }
 
   adjustDates() {

@@ -25,6 +25,7 @@ export class EmployeeListComponent implements OnInit {
       this.previousEmployees = this.employees.filter(emp => emp.endDate);
     });
   }
+  
   deleteEmployee(id: number): void {
     this.employeeService.deleteEmployee(id).subscribe(() => {
       this.deleteMessage = 'Employee data has been  deleted';

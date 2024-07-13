@@ -28,10 +28,20 @@
   border-color: #fff;
 }
 
+.employee-list-container {
+  padding: 10px;
+  background-color: #1DA1F2;
+  color: #fff
+}
 
+.primary {
+  color: #1DA1F2;
+}
 
-
-
+.head{
+  background-color: #1DA1F2;
+  color: #fff
+}
 
 
 
