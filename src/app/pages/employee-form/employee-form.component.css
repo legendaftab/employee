@@ -1,4 +1,4 @@
-/* add employee css */
+/* add employee */
 .employee-list-container {
   padding: 10px;
   border: 1px solid #007bff;
@@ -46,7 +46,7 @@
   }
 }
 
-/* employee form css */
+/* employee form  */
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -110,7 +110,7 @@
   }
 }
 
-/* button css in mobile view */
+/* button  in mobile view */
 
 @media (max-width: 767.98px) {
   .form-buttons {
@@ -124,7 +124,7 @@
   }
 }
 
-/* date picker css */
+/* date picker  */
 .row {
   display: flex;
   flex-direction: row;
