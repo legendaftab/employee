@@ -135,8 +135,8 @@
 }
 
 .col-lg-6 {
-  flex: 1; 
-  min-width: 0; 
+  flex: 1;
+  min-width: 0;
 }
 
 .date-picker {
@@ -170,5 +170,69 @@
   border-color: #f5c6cb;
 }
 
+/* calendar */
 
 
+card {
+  text-align: center;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+
+.date-picker {
+  margin: 20px 0;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* custom css */
+.custom-calendar {
+  position: relative;
+  z-index: 1000;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  max-width: 350px;
+  margin: auto;
+}
+
+.mat-calendar {
+  width: 100%;
+  font-size: 0.5rem;
+  /* Adjust font size for compactness */
+}
+
+.mat-calendar-header {
+  padding: 0 8px;
+}
+
+.mat-calendar-table-header th {
+  display: none !important;
+}
+
+.mat-calendar-table {
+  font-size: 0.5rem;
+}
+
+.mat-calendar-body-cell-content {
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+}
+
+.mat-calendar-body {
+  min-width: auto;
+}
+
+.mat-calendar-body-label {
+  font-size: 0.75rem;
+}

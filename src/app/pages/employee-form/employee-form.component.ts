@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/shared/employeee.service';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-employee-form',
@@ -65,6 +66,94 @@ export class EmployeeFormComponent implements OnInit {
     this.message = '';
   }
 
+  // date picker .ts
+  
+  activeDateField: 'startDate' | 'endDate' = 'startDate';
+  isCalendarOpen = false;
+
+  openCalendar(field: 'startDate' | 'endDate') {
+    this.activeDateField = field;
+    this.isCalendarOpen = true;
+  }
+
+  closeCalendar() {
+    this.isCalendarOpen = false;
+  }
+
+  onDateSelected(event: any) {
+    const formattedDate = format(event, 'dd-MM-yyyy');
+    if (this.activeDateField === 'startDate') {
+      this.newEmployee.startDate = formattedDate;
+    } else {
+      this.newEmployee.endDate = formattedDate;
+    }
+    this.closeCalendar();
+  }
+
+  setToday() {
+    const today = format(new Date(), 'dd-MM-yyyy');
+    if (this.activeDateField === 'startDate') {
+      this.newEmployee.startDate = today;
+    } else {
+      this.newEmployee.endDate = today;
+    }
+    this.adjustDates();
+    this.closeCalendar();
+  }
+
+  setNextMonday() {
+    const today = new Date();
+    const nextMonday = new Date(today.setDate(today.getDate() + ((1 + 7 - today.getDay()) % 7 || 7)));
+    const formattedDate = format(nextMonday, 'dd-MM-yyyy');
+    if (this.activeDateField === 'startDate') {
+      this.newEmployee.startDate = formattedDate;
+    } else {
+      this.newEmployee.endDate = formattedDate;
+    }
+    this.adjustDates();
+    this.closeCalendar();
+  }
+
+  setNextTuesday() {
+    const today = new Date();
+    const nextTuesday = new Date(today.setDate(today.getDate() + ((2 + 7 - today.getDay()) % 7 || 7)));
+    const formattedDate = format(nextTuesday, 'dd-MM-yyyy');
+    if (this.activeDateField === 'startDate') {
+      this.newEmployee.startDate = formattedDate;
+    } else {
+      this.newEmployee.endDate = formattedDate;
+    }
+    this.adjustDates();
+    this.closeCalendar();
+  }
+
+  setAfterOneWeek() {
+    const today = new Date();
+    const nextWeek = new Date(today.setDate(today.getDate() + 7));
+    const formattedDate = format(nextWeek, 'dd-MM-yyyy');
+    if (this.activeDateField === 'startDate') {
+      this.newEmployee.startDate = formattedDate;
+    } else {
+      this.newEmployee.endDate = formattedDate;
+    }
+    this.adjustDates();
+    this.closeCalendar();
+  }
+
+  adjustDates() {
+    if (this.newEmployee.startDate && this.newEmployee.endDate) {
+      const startDate = new Date(this.newEmployee.startDate.split('-').reverse().join('-'));
+      const endDate = new Date(this.newEmployee.endDate.split('-').reverse().join('-'));
+
+      if (startDate > endDate) {
+        if (this.activeDateField === 'startDate') {
+          this.newEmployee.endDate = this.newEmployee.startDate;
+        } else {
+          this.newEmployee.startDate = this.newEmployee.endDate;
+        }
+      }
+    }
+  }
 }
 
 

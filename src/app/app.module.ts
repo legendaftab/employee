@@ -16,6 +16,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 // indexDB
 const dbConfig: DBConfig = {
@@ -64,6 +67,9 @@ const dbConfig: DBConfig = {
         progressBar: true,
       }
     ),
+
+    MatCardModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
