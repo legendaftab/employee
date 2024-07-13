@@ -9,8 +9,8 @@
     <i class="fa-solid fa-plus"></i>
   </button>
 
-  <div *ngIf="successMessage" class="alert alert-success">
-    {{ successMessage }}
+  <div *ngIf="deleteMessage" class="alert alert-delete">
+    {{ deleteMessage }}
   </div>
 
   <div *ngIf="employees.length === 0" class="no-data-container">

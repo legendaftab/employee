@@ -11,7 +11,7 @@ export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
   currentEmployees: any[] = [];
   previousEmployees: any[] = [];
-  successMessage = '';
+  deleteMessage = '';
 
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
@@ -27,10 +27,10 @@ export class EmployeeListComponent implements OnInit {
   }
   deleteEmployee(id: number): void {
     this.employeeService.deleteEmployee(id).subscribe(() => {
-      this.successMessage = 'Employee data has been  deleted';
+      this.deleteMessage = 'Employee data has been  deleted';
       this.loadEmployees();
       setTimeout(() => {
-        this.successMessage = '';
+        this.deleteMessage = '';
       }, 2000);
     }, error => {
       console.error(error);
